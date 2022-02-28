@@ -11,11 +11,6 @@ namespace MS_TEAMS.Controllers
     [ApiController]
     public class MessagesController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult Messages()
-        {
-            var tasks = new string[] { "message1", "message2", "message3" };
-            return Ok(tasks);
-        }
+        
     }
 }
