@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MS_TEAMS.Services
 {
-    public class MessageService
+    public class MessageService : IMessageRepository
     {
         public List<Message> AllMessages()
         {

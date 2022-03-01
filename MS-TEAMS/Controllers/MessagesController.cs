@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MS_TEAMS.Models;
 using MS_TEAMS.Services;
 using System;
 using System.Collections.Generic;
@@ -13,10 +12,10 @@ namespace MS_TEAMS.Controllers
     [ApiController]
     public class MessagesController : ControllerBase
     {
-        private MessageService _messageService;
-        public MessagesController()
+        private readonly IMessageRepository _messageService;
+        public MessagesController(IMessageRepository _repository)
         {
-            _messageService = new MessageService();
+            _messageService = _repository;
         }
         [HttpGet("{id?}")]
         public IActionResult GetMessages(int? id)

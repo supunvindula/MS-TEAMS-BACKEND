@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MS_TEAMS.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,8 @@ namespace MS_TEAMS
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MS_TEAMS", Version = "v1" });
             });
+            //services.AddScoped<IMessageRepository, MessageService>();
+            services.AddScoped<IMessageRepository, MessageSqlServerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
