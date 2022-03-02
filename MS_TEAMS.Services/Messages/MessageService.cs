@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MS_TEAMS.Services
+namespace MS_TEAMS.Services.Messages
 {
     public class MessageService : IMessageRepository
     {
@@ -33,6 +33,16 @@ namespace MS_TEAMS.Services
             };
             messages.Add(message3);
             return messages;
+        }
+
+        public List<Message> AllMessages(int GroupId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Message> getMessages(int GroupId, int MemberId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

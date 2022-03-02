@@ -7,11 +7,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using MS_TEAMS.Services;
+using MS_TEAMS.Services.Messages;
+using MS_TEAMS.Services.Members;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace MS_TEAMS
 {
@@ -33,8 +35,10 @@ namespace MS_TEAMS
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MS_TEAMS", Version = "v1" });
             });
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             //services.AddScoped<IMessageRepository, MessageService>();
             services.AddScoped<IMessageRepository, MessageSqlServerService>();
+            services.AddScoped<IMemberRepository, MemberSqlServerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +49,17 @@ namespace MS_TEAMS
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MS_TEAMS v1"));
+            }
+            else
+            {
+                app.UseExceptionHandler(app =>
+                {
+                    app.Run(async context =>
+                    {
+                        context.Response.StatusCode = 500;
+                        await context.Response.WriteAsync("Unexpected Error in the Server!! Contact Dev");
+                    });
+                });
             }
 
             app.UseHttpsRedirection();

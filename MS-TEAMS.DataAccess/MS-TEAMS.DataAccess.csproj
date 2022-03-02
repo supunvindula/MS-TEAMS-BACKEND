@@ -18,4 +18,8 @@
     <ProjectReference Include="..\MS-TEAMS.Models\MS-TEAMS.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

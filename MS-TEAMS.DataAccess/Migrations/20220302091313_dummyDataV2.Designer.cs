@@ -4,14 +4,16 @@ using MS_TEAMS.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MS_TEAMS.DataAccess.Migrations
 {
     [DbContext(typeof(MessageDBContext))]
-    partial class MessageDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220302091313_dummyDataV2")]
+    partial class dummyDataV2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -245,8 +247,6 @@ namespace MS_TEAMS.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MessageBody")
-                        .IsRequired()
-                        .HasMaxLength(5000)
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("created")
@@ -267,7 +267,7 @@ namespace MS_TEAMS.DataAccess.Migrations
                             GroupId = 7,
                             MemberId = 1,
                             MessageBody = "How are you all?",
-                            created = new DateTime(2022, 3, 2, 23, 11, 23, 91, DateTimeKind.Local).AddTicks(8468)
+                            created = new DateTime(2022, 3, 2, 14, 43, 12, 921, DateTimeKind.Local).AddTicks(6274)
                         },
                         new
                         {
@@ -275,7 +275,7 @@ namespace MS_TEAMS.DataAccess.Migrations
                             GroupId = 7,
                             MemberId = 2,
                             MessageBody = "Hii",
-                            created = new DateTime(2022, 3, 2, 23, 11, 23, 95, DateTimeKind.Local).AddTicks(1203)
+                            created = new DateTime(2022, 3, 2, 14, 43, 12, 924, DateTimeKind.Local).AddTicks(3754)
                         },
                         new
                         {
@@ -283,7 +283,7 @@ namespace MS_TEAMS.DataAccess.Migrations
                             GroupId = 7,
                             MemberId = 3,
                             MessageBody = "There is a power cut today",
-                            created = new DateTime(2022, 3, 2, 23, 11, 23, 95, DateTimeKind.Local).AddTicks(1219)
+                            created = new DateTime(2022, 3, 2, 14, 43, 12, 924, DateTimeKind.Local).AddTicks(3769)
                         },
                         new
                         {
@@ -291,7 +291,7 @@ namespace MS_TEAMS.DataAccess.Migrations
                             GroupId = 7,
                             MemberId = 4,
                             MessageBody = "Will See you on other size",
-                            created = new DateTime(2022, 3, 2, 23, 11, 23, 95, DateTimeKind.Local).AddTicks(1221)
+                            created = new DateTime(2022, 3, 2, 14, 43, 12, 924, DateTimeKind.Local).AddTicks(3770)
                         },
                         new
                         {
@@ -299,15 +299,7 @@ namespace MS_TEAMS.DataAccess.Migrations
                             GroupId = 7,
                             MemberId = 1,
                             MessageBody = "It is okay Savindu",
-                            created = new DateTime(2022, 3, 2, 23, 11, 23, 95, DateTimeKind.Local).AddTicks(1222)
-                        },
-                        new
-                        {
-                            Id = 9,
-                            GroupId = 8,
-                            MemberId = 1,
-                            MessageBody = "Hello Career Developments",
-                            created = new DateTime(2022, 3, 2, 23, 11, 23, 95, DateTimeKind.Local).AddTicks(1223)
+                            created = new DateTime(2022, 3, 2, 14, 43, 12, 924, DateTimeKind.Local).AddTicks(3771)
                         });
                 });
 

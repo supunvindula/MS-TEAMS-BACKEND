@@ -4,14 +4,16 @@ using MS_TEAMS.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MS_TEAMS.DataAccess.Migrations
 {
     [DbContext(typeof(MessageDBContext))]
-    partial class MessageDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220301143234_dummyData")]
+    partial class dummyData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,9 +29,7 @@ namespace MS_TEAMS.DataAccess.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TeamId")
                         .HasColumnType("int");
@@ -105,14 +105,10 @@ namespace MS_TEAMS.DataAccess.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("email")
-                        .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -245,8 +241,6 @@ namespace MS_TEAMS.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MessageBody")
-                        .IsRequired()
-                        .HasMaxLength(5000)
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("created")
@@ -267,7 +261,7 @@ namespace MS_TEAMS.DataAccess.Migrations
                             GroupId = 7,
                             MemberId = 1,
                             MessageBody = "How are you all?",
-                            created = new DateTime(2022, 3, 2, 23, 11, 23, 91, DateTimeKind.Local).AddTicks(8468)
+                            created = new DateTime(2022, 3, 1, 20, 2, 33, 782, DateTimeKind.Local).AddTicks(6907)
                         },
                         new
                         {
@@ -275,7 +269,7 @@ namespace MS_TEAMS.DataAccess.Migrations
                             GroupId = 7,
                             MemberId = 2,
                             MessageBody = "Hii",
-                            created = new DateTime(2022, 3, 2, 23, 11, 23, 95, DateTimeKind.Local).AddTicks(1203)
+                            created = new DateTime(2022, 3, 1, 20, 2, 33, 785, DateTimeKind.Local).AddTicks(6308)
                         },
                         new
                         {
@@ -283,7 +277,7 @@ namespace MS_TEAMS.DataAccess.Migrations
                             GroupId = 7,
                             MemberId = 3,
                             MessageBody = "There is a power cut today",
-                            created = new DateTime(2022, 3, 2, 23, 11, 23, 95, DateTimeKind.Local).AddTicks(1219)
+                            created = new DateTime(2022, 3, 1, 20, 2, 33, 785, DateTimeKind.Local).AddTicks(6326)
                         },
                         new
                         {
@@ -291,7 +285,7 @@ namespace MS_TEAMS.DataAccess.Migrations
                             GroupId = 7,
                             MemberId = 4,
                             MessageBody = "Will See you on other size",
-                            created = new DateTime(2022, 3, 2, 23, 11, 23, 95, DateTimeKind.Local).AddTicks(1221)
+                            created = new DateTime(2022, 3, 1, 20, 2, 33, 785, DateTimeKind.Local).AddTicks(6329)
                         },
                         new
                         {
@@ -299,15 +293,7 @@ namespace MS_TEAMS.DataAccess.Migrations
                             GroupId = 7,
                             MemberId = 1,
                             MessageBody = "It is okay Savindu",
-                            created = new DateTime(2022, 3, 2, 23, 11, 23, 95, DateTimeKind.Local).AddTicks(1222)
-                        },
-                        new
-                        {
-                            Id = 9,
-                            GroupId = 8,
-                            MemberId = 1,
-                            MessageBody = "Hello Career Developments",
-                            created = new DateTime(2022, 3, 2, 23, 11, 23, 95, DateTimeKind.Local).AddTicks(1223)
+                            created = new DateTime(2022, 3, 1, 20, 2, 33, 785, DateTimeKind.Local).AddTicks(6330)
                         });
                 });
 
@@ -319,9 +305,7 @@ namespace MS_TEAMS.DataAccess.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
