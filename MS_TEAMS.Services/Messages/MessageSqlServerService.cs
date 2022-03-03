@@ -20,5 +20,16 @@ namespace MS_TEAMS.Services.Messages
         {
             return _context.Messages.Where(m => (m.GroupId==GroupId) && (m.MemberId == MemberId)).ToList();
         }
+
+        public Message SendMessage(Message message)
+        {
+            if(message != null)
+            {
+                _context.Messages.Add(message);
+                _context.SaveChanges();
+                return _context.Messages.Find(message.Id);
+            }
+            return null;
+        }
     }
 }

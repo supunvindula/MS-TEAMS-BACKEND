@@ -44,5 +44,10 @@ namespace MS_TEAMS.Services.Messages
         {
             throw new NotImplementedException();
         }
+
+        public Message SendMessage(Message message)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

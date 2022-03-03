@@ -14,6 +14,7 @@ namespace MS_TEAMS.Services.Profiles
         public MessageProfile()
         {
             CreateMap<Message, MessageDto>();
+            CreateMap<SendMessageDto, Message>();
         }
     }
 }

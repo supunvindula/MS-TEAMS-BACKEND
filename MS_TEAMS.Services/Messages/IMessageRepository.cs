@@ -11,5 +11,6 @@ namespace MS_TEAMS.Services.Messages
     {
         public List<Message> AllMessages(int GroupId);
         public List<Message> getMessages(int GroupId, int MemberId);
+        public Message SendMessage(Message message);
     }
 }
