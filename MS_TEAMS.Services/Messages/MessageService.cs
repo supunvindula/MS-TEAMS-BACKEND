@@ -40,12 +40,32 @@ namespace MS_TEAMS.Services.Messages
             throw new NotImplementedException();
         }
 
-        public List<Message> getMessages(int GroupId, int MemberId)
+        public void DeleteMessage(Message message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditMessage(Message message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Message getMessage(int GroupId, int MemberId, int MessageId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Message getMessages(int GroupId, int MemberId)
         {
             throw new NotImplementedException();
         }
 
         public Message SendMessage(Message message)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Message> IMessageRepository.getMessages(int GroupId, int MemberId)
         {
             throw new NotImplementedException();
         }

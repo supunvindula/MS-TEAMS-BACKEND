@@ -54,6 +54,32 @@ namespace MS_TEAMS.Controllers
             return CreatedAtRoute("GetMessage",new { GroupId = messageForReturn.GroupId, id = messageForReturn.Id }, messageForReturn);
         }
 
+        [HttpPut("{GroupId}/{MemberId}/{MessageId}")]
+        public ActionResult EditMessage(int GroupId,int MemberId, int MessageId,EditMessageDto message)
+        {
+            var updatingMessage = _messageService.getMessage(GroupId, MemberId,MessageId);
+            if (updatingMessage is null)
+            {
+                return NotFound();
+            }
+            _mapper.Map(message, updatingMessage);
+            _messageService.EditMessage(updatingMessage);
+            return NoContent();
+            
+        }
+
+        [HttpDelete("{GroupId}/{MemberId}/{MessageId}")]
+        public ActionResult DeleteMessage(int GroupId, int MemberId, int MessageId)
+        {
+            var deletingMessage = _messageService.getMessage(GroupId, MemberId, MessageId);
+            if (deletingMessage is null)
+            {
+                return NotFound();
+            }
+            _messageService.DeleteMessage(deletingMessage);
+            return NoContent();
+        }
+
 
     }
 }

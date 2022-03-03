@@ -21,6 +21,10 @@ namespace MS_TEAMS.Services.Messages
             return _context.Messages.Where(m => (m.GroupId==GroupId) && (m.MemberId == MemberId)).ToList();
         }
 
+        public Message getMessage(int GroupId, int MemberId,int MessageId)
+        {
+            return _context.Messages.FirstOrDefault(m => (m.GroupId == GroupId) && (m.MemberId == MemberId) && (m.Id==MessageId));
+        }
         public Message SendMessage(Message message)
         {
             if(message != null)
@@ -30,6 +34,16 @@ namespace MS_TEAMS.Services.Messages
                 return _context.Messages.Find(message.Id);
             }
             return null;
+        }
+        public void EditMessage(Message message)
+        {
+            _context.SaveChanges();
+        }
+
+        public void DeleteMessage(Message message)
+        {
+            _context.Remove(message);
+            _context.SaveChanges();
         }
     }
 }
