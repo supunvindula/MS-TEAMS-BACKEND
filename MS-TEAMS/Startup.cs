@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using MS_TEAMS.Services.SignalR;
 
 namespace MS_TEAMS
 {
@@ -41,6 +42,7 @@ namespace MS_TEAMS
             services.AddScoped<IMemberRepository, MemberSqlServerService>();
             services.AddCors();
             services.AddControllersWithViews();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,12 +73,15 @@ namespace MS_TEAMS
                 .AllowAnyHeader();
             });
 
-
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseEndpoints(routes =>
+            {
+                routes.MapHub<NotifyHub>("/notify");
+            });
 
             app.UseEndpoints(endpoints =>
             {
