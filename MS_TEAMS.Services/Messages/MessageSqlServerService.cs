@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MS_TEAMS.DataAccess;
+using Microsoft.EntityFrameworkCore;
 
 namespace MS_TEAMS.Services.Messages
 {
@@ -13,7 +14,7 @@ namespace MS_TEAMS.Services.Messages
         private readonly MessageDBContext _context = new MessageDBContext();
         public List<Message> AllMessages(int GroupId)
         {
-            return _context.Messages.Where(m => m.GroupId == GroupId).ToList();
+            return _context.Messages.Include(m=> m.Member).Where(m => m.GroupId == GroupId).ToList();
         }
 
         public List<Message> getMessages(int GroupId, int MemberId)

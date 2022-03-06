@@ -39,6 +39,8 @@ namespace MS_TEAMS
             //services.AddScoped<IMessageRepository, MessageService>();
             services.AddScoped<IMessageRepository, MessageSqlServerService>();
             services.AddScoped<IMemberRepository, MemberSqlServerService>();
+            services.AddCors();
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +63,14 @@ namespace MS_TEAMS
                     });
                 });
             }
+            app.UseCors(builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
+
 
             app.UseHttpsRedirection();
 
